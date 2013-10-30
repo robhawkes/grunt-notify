@@ -54,7 +54,10 @@ function notify(options, cb) {
 
   var args = []
       .concat(pluckAsArg(options, 'title'))
-      .concat(pluckAsArg(options, 'message'));
+      .concat(pluckAsArg(options, 'message'))
+      // Mavericks fix
+      // https://github.com/alloy/terminal-notifier/issues/63
+      .concat(['-sender', 'com.apple.Terminal']);
 
   options.debug({
     cmd: cmd,
